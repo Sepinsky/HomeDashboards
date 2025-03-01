@@ -1,0 +1,396 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - Calendar
+      kiosk: true
+views:
+  - type: panel
+    path: weeklyplannercard
+    title: WeeklyPlannerCard
+    cards:
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        layout:
+          margin: 0
+          grid-template-columns: 65% 35%
+          grid-template-rows: 72% 28%
+          height: 100%
+        cards:
+          - type: custom:week-planner-card
+            view_layout:
+              grid-column-start: 1
+              grid-column-end: -1
+              grid-row-start: 1
+              grid-row-end: -1
+            calendars:
+              - entity: calendar.home_calendar
+                color: '#08c5b0'
+              - entity: calendar.holidays_in_united_states
+                color: '#ff725c'
+              - entity: calendar.joanne_sepinsky_com
+                color: '#ff8ab7'
+              - entity: calendar.home_calendar
+              - entity: calendar.sepinsky_gmail_com
+                color: '#9c6b4e'
+              - entity: calendar.jason_sepinsky_com
+                color: '#a463f2'
+              - entity: calendar.pspgrama_gmail_com
+                color: '#4269d0'
+            days: '28'
+            startingDayOffset: 0
+            hideWeekend: false
+            noCardBackground: true
+            compact: false
+            weather:
+              showCondition: true
+              showTemperature: true
+              showLowTemperature: true
+              useTwiceDaily: false
+              entity: weather.home
+            locale: en
+            showLocation: false
+            hidePastEvents: false
+            hideDaysWithoutEvents: false
+            hideTodayWithoutEvents: false
+            combineSimilarEvents: false
+            showLegend: false
+            texts:
+              fullDay: All Day
+              noEvents: null
+              tomorrow: null
+              yesterday: null
+              today: null
+            columns: {}
+            startingDay: sunday
+            timeFormat: hh:mm
+            card_mod:
+              style: |
+                .past {
+                  opacity: .5;
+                  color: #fcfcfc;
+                }
+                .today {
+                  border: solid 1px red;
+                  border-radius: 4px;
+                }
+                .day {
+                  --days-spacing: 16px;
+                  --event-padding: 2px;
+                  --event-spacing: 4px;
+                  --event-font-size: 2.2em;
+                  --day-date-number-font-size: 5.5em;
+                  --day-date-text-font-size: 2.25em;
+                  --weather-temperature-font-size: 2em;
+                  --weather-icon-size: 50px;
+                }
+                .none {
+                  background-color: transparent !important;
+                }
+                .card-content {
+                  overflow-y: clip;
+                  max-height: 1405px;
+                }
+                :host {
+                  --masonry-view-card-margin: 0px;
+                }
+          - type: custom:layout-card
+            layout_type: custom:grid-layout
+            view_layout:
+              grid-column-start: 2
+              grid-column-end: -1
+              grid-row-start: 2
+              grid-row-end: -1
+            layout:
+              grid-template-columns: 20% 10% 10% 20% 40%
+              grid-template-rows: 40% 20% 20% 20%
+              height: 100%
+            cards:
+              - type: gauge
+                entity: sensor.back_yard_weather_station_event_rain
+                name: Total Rain
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 3
+                  grid-row-start: 1
+                  grid-row-end: 2
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: markdown
+                content: ' '
+                view_layout:
+                  grid-column-start: 3
+                  grid-column-end: 5
+                  grid-row-start: 1
+                  grid-row-end: 3
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                    }
+              - type: custom:compass-card
+                header:
+                  title:
+                    value: Wind
+                    show: true
+                  icon:
+                    value: mdi:weather-windy
+                    show: true
+                indicator_sensors:
+                  - sensor: sensor.back_yard_weather_station_wind_dir
+                    indicator:
+                      type: arrow_inward
+                value_sensors:
+                  - sensor: sensor.back_yard_weather_station_wind_speed
+                    decimals: 1
+                compass:
+                  north:
+                    show: true
+                    offset: 0
+                view_layout:
+                  grid-column-start: 3
+                  grid-column-end: 5
+                  grid-row-start: 1
+                  grid-row-end: 3
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: gauge
+                entity: sensor.back_yard_weather_station_hourly_rain_rate
+                name: Rain Rate
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 3
+                  grid-row-start: 2
+                  grid-row-end: 4
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: entity
+                entity: sensor.back_yard_weather_station_max_gust
+                name: Max Gust Today
+                view_layout:
+                  grid-column-start: 3
+                  grid-column-end: 5
+                  grid-row-start: 3
+                  grid-row-end: 4
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: entity
+                entity: cover.garage_doors_garage_door_1
+                name: Double Door
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 2
+                  grid-row-start: 4
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: entity
+                entity: cover.garage_doors_garage_door_2
+                name: Single Door
+                view_layout:
+                  grid-column-start: 2
+                  grid-column-end: 4
+                  grid-row-start: 4
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: entity
+                entity: cover.pool_house_door_garage_door_1
+                name: Pool House
+                view_layout:
+                  grid-column-start: 4
+                  grid-column-end: 5
+                  grid-row-start: 4
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: markdown
+                content: ' '
+                view_layout:
+                  grid-column-start: 5
+                  grid-column-end: 6
+                  grid-row-start: 1
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: custom:flex-horseshoe-card
+                entities:
+                  - entity: sensor.back_yard_weather_station_temp
+                    decimals: 1
+                    unit: °F
+                    name: Outdoor Temp
+                  - entity: sensor.back_yard_weather_station_humidity
+                    decimals: 1
+                    name: Outdoor humidity
+                  - entity: sensor.back_yard_weather_station_humidity_in
+                    decimals: 1
+                    name: Indoor humidity
+                  - entity: sensor.back_yard_weather_station_inside_temp
+                    decimals: 1
+                    unit: °F
+                    name: Indoor
+                  - entity: sensor.back_yard_weather_station_feels_like
+                    decimals: 1
+                    name: Feels Like
+                  - entity: sensor.back_yard_weather_station_dew_point
+                    decimals: 1
+                    name: Dew Point
+                show:
+                  horseshoe_style: lineargradient
+                layout:
+                  hlines:
+                    - id: 0
+                      xpos: 50
+                      ypos: 43
+                      length: 70
+                      styles:
+                        - opacity: 0.2;
+                  vlines:
+                    - id: 0
+                      xpos: 50
+                      ypos: 59
+                      length: 30
+                      styles:
+                        - opacity: 0.2;
+                  states:
+                    - id: 0
+                      entity_index: 0
+                      xpos: 50
+                      ypos: 32
+                      styles:
+                        - font-size: 3em;
+                        - opacity: 0.9;
+                    - id: 1
+                      entity_index: 1
+                      xpos: 45
+                      ypos: 55
+                      styles:
+                        - font-size: 1.8em;
+                        - text-anchor: end;
+                    - id: 2
+                      entity_index: 2
+                      xpos: 57
+                      ypos: 55
+                      styles:
+                        - font-size: 1.8em;
+                        - text-anchor: start;
+                    - id: 3
+                      entity_index: 3
+                      xpos: 2
+                      ypos: 7
+                      styles:
+                        - font-size: 1.0em;
+                        - text-anchor: start;
+                    - id: 4
+                      entity_index: 4
+                      xpos: 98
+                      ypos: 7
+                      styles:
+                        - font-size: 1.0em;
+                        - text-anchor: end;
+                    - id: 5
+                      entity_index: 5
+                      xpos: 50
+                      ypos: 87
+                      styles:
+                        - font-size: 1.0em;
+                  names:
+                    - id: 0
+                      entity_index: 0
+                      xpos: 50
+                      ypos: 39
+                      styles:
+                        - font-size: 0.48em;
+                    - id: 1
+                      entity_index: 1
+                      xpos: 46
+                      ypos: 62
+                      styles:
+                        - font-size: 0.5em;
+                        - text-anchor: end;
+                    - id: 2
+                      entity_index: 2
+                      xpos: 54
+                      ypos: 62
+                      styles:
+                        - font-size: 0.5em;
+                        - text-anchor: start;
+                    - id: 3
+                      entity_index: 4
+                      xpos: 80
+                      ypos: 12
+                      styles:
+                        - font-size: 0.5em;
+                        - text-anchor: start;
+                    - id: 4
+                      entity_index: 3
+                      xpos: 2
+                      ypos: 12
+                      styles:
+                        - font-size: 0.48em;
+                        - text-anchor: start;
+                    - id: 5
+                      entity_index: 5
+                      xpos: 50
+                      ypos: 93
+                      styles:
+                        - font-size: 0.5em;
+                horseshoe_scale:
+                  min: -20
+                  max: 105
+                color_stops:
+                  '40': '#D82039'
+                  '80': '#DBD037'
+                  '105': '#ffc31f'
+                  '-20': '#4567EF'
+                view_layout:
+                  grid-column-start: 5
+                  grid-column-end: 6
+                  grid-row-start: 1
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 1px;
+                      align-self: center;
+                      z-index: 2;
+                    }
