@@ -33,9 +33,9 @@ views:
               - entity: calendar.sepinsky_gmail_com
                 color: '#9c6b4e'
               - entity: calendar.jason_sepinsky_com
-                color: '#a463f2'
-              - entity: calendar.pspgrama_gmail_com
                 color: '#4269d0'
+              - entity: calendar.pspgrama_gmail_com
+                color: '#a463f2'
             days: '28'
             startingDayOffset: 0
             hideWeekend: false
@@ -108,6 +108,7 @@ views:
               - type: gauge
                 entity: sensor.back_yard_weather_station_event_rain
                 name: Total Rain
+                max: 8
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
@@ -168,6 +169,7 @@ views:
               - type: gauge
                 entity: sensor.back_yard_weather_station_hourly_rain_rate
                 name: Rain Rate
+                max: 5
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
@@ -301,7 +303,7 @@ views:
                     decimals: 1
                     name: Dew Point
                 show:
-                  horseshoe_style: lineargradient
+                  horseshoe_style: colorstopgradient
                 layout:
                   hlines:
                     - id: 0
@@ -404,7 +406,6 @@ views:
                   min: -20
                   max: 105
                 color_stops:
-                  '40': '#D82039'
-                  '80': '#DBD037'
-                  '105': '#ffc31f'
+                  '32': '#DBD037'
+                  '105': '#D82039'
                   '-20': '#4567EF'
