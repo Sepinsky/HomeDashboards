@@ -102,7 +102,7 @@ views:
               grid-row-end: -1
             layout:
               grid-template-columns: 30% 3.33% 6.67% 20% 6.67% 33.33%
-              grid-template-rows: 30% 30% 20% 20%
+              grid-template-rows: 15% 15% 30% 20% 20%
               height: 100%
             cards:
               - type: gauge
@@ -113,7 +113,7 @@ views:
                   grid-column-start: 1
                   grid-column-end: 2
                   grid-row-start: 1
-                  grid-row-end: 2
+                  grid-row-end: 3
                 card_mod:
                   style: |
                     :host {
@@ -126,8 +126,23 @@ views:
                 view_layout:
                   grid-column-start: 2
                   grid-column-end: 5
+                  grid-row-start: 2
+                  grid-row-end: 5
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - clock_size: medium
+                show_seconds: true
+                type: clock
+                view_layout:
+                  grid-column-start: 2
+                  grid-column-end: 5
                   grid-row-start: 1
-                  grid-row-end: 4
+                  grid-row-end: 2
                 card_mod:
                   style: |
                     :host {
@@ -157,8 +172,8 @@ views:
                 view_layout:
                   grid-column-start: 2
                   grid-column-end: 5
-                  grid-row-start: 1
-                  grid-row-end: 4
+                  grid-row-start: 2
+                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
@@ -173,8 +188,8 @@ views:
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
-                  grid-row-start: 2
-                  grid-row-end: 3
+                  grid-row-start: 3
+                  grid-row-end: 4
                 card_mod:
                   style: |
                     :host {
@@ -188,8 +203,8 @@ views:
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
-                  grid-row-start: 3
-                  grid-row-end: 4
+                  grid-row-start: 4
+                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
@@ -206,8 +221,8 @@ views:
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 3
-                  grid-row-start: 4
-                  grid-row-end: 5
+                  grid-row-start: 5
+                  grid-row-end: 6
                 card_mod:
                   style: |
                     :host {
@@ -224,8 +239,8 @@ views:
                 view_layout:
                   grid-column-start: 3
                   grid-column-end: 6
-                  grid-row-start: 4
-                  grid-row-end: 5
+                  grid-row-start: 5
+                  grid-row-end: 6
                 card_mod:
                   style: |
                     :host {
@@ -242,8 +257,8 @@ views:
                 view_layout:
                   grid-column-start: 6
                   grid-column-end: 7
-                  grid-row-start: 4
-                  grid-row-end: 5
+                  grid-row-start: 5
+                  grid-row-end: 6
                 card_mod:
                   style: |
                     :host {
@@ -260,7 +275,7 @@ views:
                   grid-column-start: 5
                   grid-column-end: 7
                   grid-row-start: 1
-                  grid-row-end: 4
+                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
@@ -273,7 +288,7 @@ views:
                   grid-column-start: 5
                   grid-column-end: 7
                   grid-row-start: 1
-                  grid-row-end: 4
+                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
@@ -302,6 +317,10 @@ views:
                   - entity: sensor.back_yard_weather_station_dew_point
                     decimals: 1
                     name: Dew Point
+                  - entity: sensor.pool_pump_temp_2
+                    decimals: 1
+                    unit: °F
+                    name: Pool Temp
                 show:
                   horseshoe_style: colorstopgradient
                 layout:
@@ -309,14 +328,20 @@ views:
                     - id: 0
                       xpos: 50
                       ypos: 43
-                      length: 70
+                      length: 80
+                      styles:
+                        - opacity: 0.2;
+                    - id: 1
+                      xpos: 50
+                      ypos: 69
+                      length: 65
                       styles:
                         - opacity: 0.2;
                   vlines:
                     - id: 0
                       xpos: 50
-                      ypos: 59
-                      length: 30
+                      ypos: 66
+                      length: 45
                       styles:
                         - opacity: 0.2;
                   states:
@@ -349,7 +374,7 @@ views:
                         - font-size: 1.5em;
                         - text-anchor: start;
                     - id: 4
-                      entity_index: 4
+                      entity_index: 6
                       xpos: 99
                       ypos: 7
                       styles:
@@ -357,8 +382,14 @@ views:
                         - text-anchor: end;
                     - id: 5
                       entity_index: 5
-                      xpos: 50
-                      ypos: 87
+                      xpos: 35
+                      ypos: 82
+                      styles:
+                        - font-size: 1.5em;
+                    - id: 6
+                      entity_index: 4
+                      xpos: 65
+                      ypos: 82
                       styles:
                         - font-size: 1.5em;
                   names:
@@ -383,7 +414,7 @@ views:
                         - font-size: 0.5em;
                         - text-anchor: start;
                     - id: 3
-                      entity_index: 4
+                      entity_index: 6
                       xpos: 80
                       ypos: 12
                       styles:
@@ -398,8 +429,14 @@ views:
                         - text-anchor: start;
                     - id: 5
                       entity_index: 5
-                      xpos: 50
-                      ypos: 93
+                      xpos: 35
+                      ypos: 87
+                      styles:
+                        - font-size: 0.56em;
+                    - id: 6
+                      entity_index: 4
+                      xpos: 65
+                      ypos: 87
                       styles:
                         - font-size: 0.56em;
                 horseshoe_scale:
