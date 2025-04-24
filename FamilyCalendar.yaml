@@ -233,6 +233,9 @@ views:
                     .header {
                       padding: 0px 16px 0px !important;
                     }
+                    ha-card {
+                      color: {% if(states("cover.garage_doors_garage_door_1") in ('closed')) %}lightgreen{% else %}red{% endif %}
+                    }
               - type: entity
                 entity: cover.garage_doors_garage_door_2
                 name: Single Door
@@ -251,6 +254,9 @@ views:
                     .header {
                       padding: 0px 16px 0px !important;
                     }
+                    ha-card {
+                      color: {% if(states("cover.garage_doors_garage_door_2") in ('closed')) %}lightgreen{% else %}red{% endif %}
+                    }
               - type: entity
                 entity: cover.pool_house_door_garage_door_1
                 name: Pool House
@@ -268,6 +274,9 @@ views:
                     }
                     .header {
                       padding: 0px 16px 0px !important;
+                    }
+                    ha-card {
+                      color: {% if(states("cover.pool_house_door_garage_door_1") in ('closed')) %}lightgreen{% else %}red{% endif %}
                     }
               - type: markdown
                 content: ' '
@@ -317,7 +326,7 @@ views:
                   - entity: sensor.back_yard_weather_station_dew_point
                     decimals: 1
                     name: Dew Point
-                  - entity: sensor.pool_pump_temp_2
+                  - entity: sensor.pool_temp
                     decimals: 1
                     unit: °F
                     name: Pool Temp
@@ -328,13 +337,13 @@ views:
                     - id: 0
                       xpos: 50
                       ypos: 43
-                      length: 80
+                      length: 76
                       styles:
                         - opacity: 0.2;
                     - id: 1
                       xpos: 50
                       ypos: 69
-                      length: 65
+                      length: 68
                       styles:
                         - opacity: 0.2;
                   vlines:
@@ -415,7 +424,7 @@ views:
                         - text-anchor: start;
                     - id: 3
                       entity_index: 6
-                      xpos: 80
+                      xpos: 79
                       ypos: 12
                       styles:
                         - font-size: 0.56em;
