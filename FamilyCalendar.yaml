@@ -36,7 +36,7 @@ views:
                 color: '#4269d0'
               - entity: calendar.pspgrama_gmail_com
                 color: '#a463f2'
-            days: '28'
+            days: '35'
             startingDayOffset: 0
             hideWeekend: false
             noCardBackground: true
