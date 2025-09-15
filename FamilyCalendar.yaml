@@ -14,7 +14,7 @@ views:
           margin: 0
           grid-template-columns: 75% 25%
           grid-template-rows: 75% 25%
-          height: 100%
+          height: 99.4%
         cards:
           - type: custom:week-planner-card
             view_layout:
@@ -46,7 +46,7 @@ views:
               showTemperature: true
               showLowTemperature: true
               useTwiceDaily: false
-              entity: weather.home
+              entity: weather.weather
             locale: en
             showLocation: false
             hidePastEvents: false
