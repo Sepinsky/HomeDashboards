@@ -11,10 +11,11 @@ views:
       - type: custom:layout-card
         layout_type: custom:grid-layout
         layout:
-          margin: 0
-          grid-template-columns: 75% 25%
-          grid-template-rows: 75% 25%
-          height: 99.4%
+          margin: 0px 0px 0px 0px
+          padding: 0px 0px 0px 0px
+          grid-template-columns: auto 640px
+          grid-template-rows: auto 360px
+          height: 100%
         cards:
           - type: custom:week-planner-card
             view_layout:
@@ -46,7 +47,7 @@ views:
               showTemperature: true
               showLowTemperature: true
               useTwiceDaily: false
-              entity: weather.weather
+              entity: weather.pirateweather
             locale: en
             showLocation: false
             hidePastEvents: false
@@ -88,7 +89,7 @@ views:
                 }
                 .card-content {
                   overflow-y: clip;
-                  max-height: 1405px;
+                  max-height: 1400px;
                 }
                 :host {
                   --masonry-view-card-margin: 0px;
@@ -101,8 +102,10 @@ views:
               grid-row-start: 2
               grid-row-end: -1
             layout:
-              grid-template-columns: 30% 3.33% 6.67% 20% 6.67% 33.33%
-              grid-template-rows: 15% 15% 30% 20% 20%
+              margin: 0px 0px 0px 0px
+              padding: 0px 0px 0px 0px
+              grid-template-columns: 190px 20px 42px 127px 42px 211px
+              grid-template-rows: 53px 53px 106px 70px 70px
               height: 100%
             cards:
               - type: gauge
@@ -299,12 +302,21 @@ views:
                   grid-row-start: 1
                   grid-row-end: 5
                 card_mod:
-                  style: |
-                    :host {
-                      --masonry-view-card-margin: 1px;
-                      align-self: center;
-                      z-index: 2;
-                    }
+                  style:
+                    .: |
+                      :host {
+                        --masonry-view-card-margin: 1px;
+                        align-self: center;
+                        z-index: 2;
+                      }
+                    .container:
+                      .card--filter-none:
+                        .datagroup: |
+                          text:nth-child(15) .state__value {
+                            {% if states('switch.pool_controller_pool_heat') == 'on' %}
+                              fill: darkorange !important;
+                            {% endif %}
+                          }
                 entities:
                   - entity: sensor.back_yard_weather_station_temp
                     decimals: 1
