@@ -13,7 +13,7 @@ views:
         layout:
           margin: 0px 0px 0px 0px
           padding: 0px 0px 0px 0px
-          grid-template-columns: auto 640px
+          grid-template-columns: auto 893px
           grid-template-rows: auto 360px
           height: 100%
         cards:
@@ -98,23 +98,72 @@ views:
             layout_type: custom:grid-layout
             view_layout:
               grid-column-start: 2
-              grid-column-end: -1
+              grid-column-end: 3
               grid-row-start: 2
-              grid-row-end: -1
+              grid-row-end: 3
             layout:
               margin: 0px 0px 0px 0px
               padding: 0px 0px 0px 0px
-              grid-template-columns: 190px 20px 42px 127px 42px 211px
+              grid-template-columns: 253px 190px 20px 42px 127px 42px 211px
               grid-template-rows: 53px 53px 106px 70px 70px
               height: 100%
             cards:
+              - type: markdown
+                content: ' '
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 2
+                  grid-row-start: 2
+                  grid-row-end: 6
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      z-index: 2;
+                    }
+              - type: custom:power-flow-card-plus
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 2
+                  grid-row-start: 2
+                  grid-row-end: 6
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 1px;
+                      align-self: center;
+                      z-index: 2;
+                    }
+                entities:
+                  grid:
+                    entity: sensor.envoy_482515044701_current_power_consumption
+                    secondary_info: {}
+                  solar:
+                    entity: sensor.envoy_482515044701_current_power_production
+                    display_zero_state: true
+                    secondary_info: {}
+                    icon: mdi:solar-power-variant
+                  home:
+                    secondary_info: {}
+                display_zero_lines: true
+                use_new_flow_rate_model: true
+                w_decimals: 0
+                kw_decimals: 1
+                min_flow_rate: 0.75
+                max_flow_rate: 5
+                max_expected_power: 10000
+                min_expected_power: 0.01
+                watt_threshold: 1000
+                transparency_zero_lines: 0
+                sort_individual_devices: false
               - type: gauge
                 entity: sensor.back_yard_weather_station_event_rain
                 name: Total Rain
                 max: 8
                 view_layout:
-                  grid-column-start: 1
-                  grid-column-end: 2
+                  grid-column-start: 2
+                  grid-column-end: 3
                   grid-row-start: 1
                   grid-row-end: 3
                 card_mod:
@@ -127,8 +176,8 @@ views:
               - type: markdown
                 content: ' '
                 view_layout:
-                  grid-column-start: 2
-                  grid-column-end: 5
+                  grid-column-start: 3
+                  grid-column-end: 6
                   grid-row-start: 2
                   grid-row-end: 5
                 card_mod:
@@ -142,8 +191,8 @@ views:
                 show_seconds: true
                 type: clock
                 view_layout:
-                  grid-column-start: 2
-                  grid-column-end: 5
+                  grid-column-start: 3
+                  grid-column-end: 6
                   grid-row-start: 1
                   grid-row-end: 2
                 card_mod:
@@ -173,8 +222,8 @@ views:
                     show: true
                     offset: 0
                 view_layout:
-                  grid-column-start: 2
-                  grid-column-end: 5
+                  grid-column-start: 3
+                  grid-column-end: 6
                   grid-row-start: 2
                   grid-row-end: 5
                 card_mod:
@@ -189,8 +238,8 @@ views:
                 name: Rain Rate
                 max: 5
                 view_layout:
-                  grid-column-start: 1
-                  grid-column-end: 2
+                  grid-column-start: 2
+                  grid-column-end: 3
                   grid-row-start: 3
                   grid-row-end: 4
                 card_mod:
@@ -204,8 +253,8 @@ views:
                 entity: sensor.back_yard_weather_station_max_gust
                 name: Max Gust Today
                 view_layout:
-                  grid-column-start: 1
-                  grid-column-end: 2
+                  grid-column-start: 2
+                  grid-column-end: 3
                   grid-row-start: 4
                   grid-row-end: 5
                 card_mod:
@@ -222,8 +271,8 @@ views:
                 entity: cover.garage_doors_garage_door_1
                 name: Double Door
                 view_layout:
-                  grid-column-start: 1
-                  grid-column-end: 3
+                  grid-column-start: 2
+                  grid-column-end: 4
                   grid-row-start: 5
                   grid-row-end: 6
                 card_mod:
@@ -243,8 +292,8 @@ views:
                 entity: cover.garage_doors_garage_door_2
                 name: Single Door
                 view_layout:
-                  grid-column-start: 3
-                  grid-column-end: 6
+                  grid-column-start: 4
+                  grid-column-end: 7
                   grid-row-start: 5
                   grid-row-end: 6
                 card_mod:
@@ -264,8 +313,8 @@ views:
                 entity: cover.pool_house_door_garage_door_1
                 name: Pool House
                 view_layout:
-                  grid-column-start: 6
-                  grid-column-end: 7
+                  grid-column-start: 7
+                  grid-column-end: 8
                   grid-row-start: 5
                   grid-row-end: 6
                 card_mod:
@@ -284,8 +333,8 @@ views:
               - type: markdown
                 content: ' '
                 view_layout:
-                  grid-column-start: 5
-                  grid-column-end: 7
+                  grid-column-start: 6
+                  grid-column-end: 8
                   grid-row-start: 1
                   grid-row-end: 5
                 card_mod:
@@ -297,8 +346,8 @@ views:
                     }
               - type: custom:flex-horseshoe-card
                 view_layout:
-                  grid-column-start: 5
-                  grid-column-end: 7
+                  grid-column-start: 6
+                  grid-column-end: 8
                   grid-row-start: 1
                   grid-row-end: 5
                 card_mod:
