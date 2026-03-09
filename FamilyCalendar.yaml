@@ -13,8 +13,8 @@ views:
         layout:
           margin: 0px 0px 0px 0px
           padding: 0px 0px 0px 0px
-          grid-template-columns: auto 893px
-          grid-template-rows: auto 360px
+          grid-template-columns: auto 903px
+          grid-template-rows: auto 378px
           height: 100%
         cards:
           - type: custom:week-planner-card
@@ -30,7 +30,6 @@ views:
                 color: '#ff725c'
               - entity: calendar.joanne_sepinsky_com
                 color: '#ff8ab7'
-              - entity: calendar.home_calendar
               - entity: calendar.sepinsky_gmail_com
                 color: '#9c6b4e'
               - entity: calendar.jason_sepinsky_com
@@ -104,8 +103,8 @@ views:
             layout:
               margin: 0px 0px 0px 0px
               padding: 0px 0px 0px 0px
-              grid-template-columns: 253px 190px 20px 42px 127px 42px 211px
-              grid-template-rows: 53px 53px 106px 70px 70px
+              grid-template-columns: 263px 190px 20px 42px 127px 42px 211px
+              grid-template-rows: 53px 53px 106px 70px 88px
               height: 100%
             cards:
               - type: markdown
@@ -113,7 +112,7 @@ views:
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
-                  grid-row-start: 2
+                  grid-row-start: 1
                   grid-row-end: 6
                 card_mod:
                   style: |
@@ -126,7 +125,7 @@ views:
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
-                  grid-row-start: 2
+                  grid-row-start: 1
                   grid-row-end: 6
                 card_mod:
                   style: |
@@ -137,7 +136,7 @@ views:
                     }
                 entities:
                   grid:
-                    entity: sensor.envoy_482515044701_current_power_consumption
+                    entity: sensor.envoy_482515044701_current_net_power_consumption
                     secondary_info: {}
                   solar:
                     entity: sensor.envoy_482515044701_current_power_production
@@ -146,13 +145,19 @@ views:
                     icon: mdi:solar-power-variant
                   home:
                     secondary_info: {}
-                display_zero_lines: true
+                display_zero_lines:
+                  mode: transparency
+                  transparency: 70
+                  grey_color:
+                    - 189
+                    - 189
+                    - 189
                 use_new_flow_rate_model: true
                 w_decimals: 0
-                kw_decimals: 1
+                kw_decimals: 2
                 min_flow_rate: 0.75
-                max_flow_rate: 5
-                max_expected_power: 10000
+                max_flow_rate: 7
+                max_expected_power: 15000
                 min_expected_power: 0.01
                 watt_threshold: 1000
                 transparency_zero_lines: 0
@@ -166,20 +171,6 @@ views:
                   grid-column-end: 3
                   grid-row-start: 1
                   grid-row-end: 3
-                card_mod:
-                  style: |
-                    :host {
-                      --masonry-view-card-margin: 0px;
-                      border: solid 1px #424447;
-                      z-index: 2;
-                    }
-              - type: markdown
-                content: ' '
-                view_layout:
-                  grid-column-start: 3
-                  grid-column-end: 6
-                  grid-row-start: 2
-                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
@@ -213,7 +204,7 @@ views:
                 indicator_sensors:
                   - sensor: sensor.back_yard_weather_station_wind_dir
                     indicator:
-                      type: arrow_inward
+                      image: arrow_inward
                 value_sensors:
                   - sensor: sensor.back_yard_weather_station_wind_speed
                     decimals: 1
@@ -229,9 +220,10 @@ views:
                 card_mod:
                   style: |
                     :host {
-                      --masonry-view-card-margin: 1px;
-                      align-self: center;
-                      z-index: 2;
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      align-self: bottom;
+                      z-index: 1;
                     }
               - type: gauge
                 entity: sensor.back_yard_weather_station_hourly_rain_rate
@@ -262,6 +254,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-bottom: 0px;
                       z-index: 2;
                       }
                     .header {
@@ -280,6 +273,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-top: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -301,6 +295,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-top: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -322,6 +317,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-top: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -342,6 +338,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-bottom: 0px;
                       z-index: 2;
                     }
               - type: custom:flex-horseshoe-card
