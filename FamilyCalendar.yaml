@@ -170,6 +170,7 @@ views:
               - type: entity
                 entity: sensor.envoy_482515044701_energy_production_today
                 name: Energy Production Today
+                icon: none
                 view_layout:
                   grid-column-start: 1
                   grid-column-end: 2
@@ -177,6 +178,9 @@ views:
                   grid-row-end: 6
                 card_mod:
                   style: |
+                    ha-card {
+                      align-items: center;
+                    }
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
@@ -186,7 +190,7 @@ views:
                       z-index: 2;
                     }
                     .header {
-                      padding: 0px 16px 0px !important;
+                      padding: 0px 16px 0px 24px !important;
                     }
               - type: gauge
                 entity: sensor.back_yard_weather_station_event_rain
