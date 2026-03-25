@@ -118,7 +118,10 @@ views:
                   style: |
                     :host {
                       --masonry-view-card-margin: 0px;
-                      border: solid 1px #424447;
+                      border-top: solid 2px #424447;
+                      border-left: solid 2px #424447;
+                      border-bottom: solid 2px #424447;
+                      border-right: solid 1px #424447;
                       z-index: 2;
                     }
               - type: custom:power-flow-card-plus
@@ -126,11 +129,11 @@ views:
                   grid-column-start: 1
                   grid-column-end: 2
                   grid-row-start: 1
-                  grid-row-end: 6
+                  grid-row-end: 5
                 card_mod:
                   style: |
                     :host {
-                      --masonry-view-card-margin: 1px;
+                      --masonry-view-card-margin: 2px;
                       align-self: center;
                       z-index: 2;
                     }
@@ -138,11 +141,13 @@ views:
                   grid:
                     entity: sensor.envoy_482515044701_current_net_power_consumption
                     secondary_info: {}
+                    name: ' '
                   solar:
                     entity: sensor.envoy_482515044701_current_power_production
                     display_zero_state: true
                     secondary_info: {}
                     icon: mdi:solar-power-variant
+                    name: ' '
                   home:
                     secondary_info: {}
                 display_zero_lines:
@@ -162,6 +167,27 @@ views:
                 watt_threshold: 1000
                 transparency_zero_lines: 0
                 sort_individual_devices: false
+              - type: entity
+                entity: sensor.envoy_482515044701_energy_production_today
+                name: Energy Production Today
+                view_layout:
+                  grid-column-start: 1
+                  grid-column-end: 2
+                  grid-row-start: 5
+                  grid-row-end: 6
+                card_mod:
+                  style: |
+                    :host {
+                      --masonry-view-card-margin: 0px;
+                      border: solid 1px #424447;
+                      border-top: solid 2px #424447;
+                      border-bottom: solid 2px #424447;
+                      border-left: solid 2px #424447;
+                      z-index: 2;
+                    }
+                    .header {
+                      padding: 0px 16px 0px !important;
+                    }
               - type: gauge
                 entity: sensor.back_yard_weather_station_event_rain
                 name: Total Rain
@@ -176,6 +202,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-top: solid 2px #424447;
                       z-index: 2;
                     }
               - clock_size: medium
@@ -191,6 +218,7 @@ views:
                     :host {
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
+                      border-top: solid 2px #424447;
                       z-index: 2;
                     }
               - type: custom:compass-card
@@ -274,6 +302,7 @@ views:
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
                       border-top: solid 2px #424447;
+                      border-bottom: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -296,6 +325,7 @@ views:
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
                       border-top: solid 2px #424447;
+                      border-bottom: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -318,6 +348,8 @@ views:
                       --masonry-view-card-margin: 0px;
                       border: solid 1px #424447;
                       border-top: solid 2px #424447;
+                      border-bottom: solid 2px #424447;
+                      border-right: solid 2px #424447;
                       z-index: 2;
                     }
                     .header {
@@ -337,8 +369,10 @@ views:
                   style: |
                     :host {
                       --masonry-view-card-margin: 0px;
-                      border: solid 1px #424447;
+                      border-top: solid 2px #424447;
+                      border-left: solid 1px #424447;
                       border-bottom: 0px;
+                      border-right: solid 2px #424447;
                       z-index: 2;
                     }
               - type: custom:flex-horseshoe-card
@@ -351,7 +385,7 @@ views:
                   style:
                     .: |
                       :host {
-                        --masonry-view-card-margin: 1px;
+                        --masonry-view-card-margin: 2px;
                         align-self: center;
                         z-index: 2;
                       }
