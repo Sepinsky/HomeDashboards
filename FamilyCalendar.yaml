@@ -103,7 +103,7 @@ views:
             layout:
               margin: 0px 0px 0px 0px
               padding: 0px 0px 0px 0px
-              grid-template-columns: 263px 190px 20px 42px 127px 42px 211px
+              grid-template-columns: 263px 175px 35px 42px 127px 42px 211px
               grid-template-rows: 53px 53px 106px 70px 88px
               height: 100%
             cards:
@@ -192,10 +192,21 @@ views:
                     .header {
                       padding: 0px 16px 0px 24px !important;
                     }
-              - type: gauge
+              - type: custom:gauge-card-pro
                 entity: sensor.back_yard_weather_station_event_rain
-                name: Total Rain
+                min: 0
                 max: 8
+                segments:
+                  - from: 0
+                    color: '#43a047'
+                  - from: 1.5
+                    color: '#ffa600'
+                  - from: 5
+                    color: '#db4437'
+                needle: false
+                gradient: true
+                titles:
+                  primary: Total Rain
                 view_layout:
                   grid-column-start: 2
                   grid-column-end: 3
@@ -257,10 +268,21 @@ views:
                       align-self: bottom;
                       z-index: 1;
                     }
-              - type: gauge
+              - type: custom:gauge-card-pro
                 entity: sensor.back_yard_weather_station_hourly_rain_rate
-                name: Rain Rate
+                min: 0
                 max: 5
+                segments:
+                  - from: 0
+                    color: '#43a047'
+                  - from: 1
+                    color: '#ffa600'
+                  - from: 3
+                    color: '#db4437'
+                needle: false
+                gradient: true
+                titles:
+                  primary: Rain Rate
                 view_layout:
                   grid-column-start: 2
                   grid-column-end: 3
