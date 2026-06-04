@@ -41,12 +41,6 @@ views:
             hideWeekend: false
             noCardBackground: true
             compact: false
-            weather:
-              showCondition: true
-              showTemperature: true
-              showLowTemperature: true
-              useTwiceDaily: false
-              entity: weather.pirateweather
             locale: en
             showLocation: false
             hidePastEvents: false
@@ -54,6 +48,10 @@ views:
             hideTodayWithoutEvents: false
             combineSimilarEvents: false
             showLegend: false
+            weather:
+              entity: weather.pirateweather
+              showTemperature: true
+              showLowTemperature: true
             texts:
               fullDay: All Day
               noEvents: null
@@ -415,14 +413,6 @@ views:
                         align-self: center;
                         z-index: 2;
                       }
-                    .container:
-                      .card--filter-none:
-                        .datagroup: |
-                          text:nth-child(15) .state__value {
-                            {% if states('switch.pool_controller_pool_heat') == 'on' %}
-                              fill: darkorange !important;
-                            {% endif %}
-                          }
                 entities:
                   - entity: sensor.back_yard_weather_station_temp
                     decimals: 1
@@ -507,6 +497,12 @@ views:
                       styles:
                         - font-size: 1.5em;
                         - text-anchor: end;
+                        - fill: |
+                            [[[
+                              const v = String(states['switch.pool_controller_pool_heat'].state);
+                              if (v == "on") return 'darkorange';
+                              return 'var(--primary-text-color)';
+                            ]]]
                     - id: 5
                       entity_index: 5
                       xpos: 35
